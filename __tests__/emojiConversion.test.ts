@@ -10,20 +10,20 @@ import {
 
 describe("Lib: emojiConversion", () => {
   describe("Function: convertEmojis", () => {
-    it("can encode emojis within a given string", () => {
-      const arg: string = "👋Hello World!🌎🙋‍♂️";
-      const result: string = convertEmojis(arg, "encode");
-      const expectedResult: string =
+    it("can encode emojis within a give", () => {
+      const arg = "👋Hello World!🌎🙋‍♂️";
+      const result = convertEmojis(arg, "encode");
+      const expectedResult =
         "#55357##56395#Hello World!#55356##57102##55357##56907##8205##9794##65039#";
 
       expect(result).toBe(expectedResult);
     });
 
-    it("can decode emojis within a given string", () => {
+    it("can decode emojis within a give", () => {
       const arg =
         "#55357##56395#Hello World!#55356##57102##55357##56907##8205##9794##65039#";
-      const result: string = convertEmojis(arg, "decode");
-      const expectedResult: string = "👋Hello World!🌎🙋‍♂️";
+      const result = convertEmojis(arg, "decode");
+      const expectedResult = "👋Hello World!🌎🙋‍♂️";
 
       expect(result).toBe(expectedResult);
     });
@@ -31,16 +31,16 @@ describe("Lib: emojiConversion", () => {
 
   describe("Function: charParser", () => {
     it("parses an emoji into its individual parts if applicable", () => {
-      const arg: string = "🙋‍♂️";
-      const result: string[] = charParser(arg);
-      const expectedResult: string[] = ["\ud83d", "\ude4b", "‍", "♂", "️"];
+      const arg = "🙋‍♂️";
+      const result = charParser(arg);
+      const expectedResult = ["\ud83d", "\ude4b", "‍", "♂", "️"];
 
       expect(result).toEqual(expectedResult);
     });
     it("distinguishes normal characters from emojis when parsing", () => {
-      const arg: string = "hello🙋‍♂️world";
-      const result: string[] = charParser(arg);
-      const expectedResult: string[] = [
+      const arg = "hello🙋‍♂️world";
+      const result = charParser(arg);
+      const expectedResult = [
         "h",
         "e",
         "l",
@@ -64,12 +64,12 @@ describe("Lib: emojiConversion", () => {
 
   describe("Function: createConditionalsForCharParse", () => {
     it("create conditionals to be used for charParser function", () => {
-      const list: string[][] = [["h"], ["e"], ["l"], ["l"], ["o"], ["\ud83d"]];
-      const char: string = "\ude4b";
-      const lastArrInList: string[] = list[list.length - 1];
+      const list = [["h"], ["e"], ["l"], ["l"], ["o"], ["\ud83d"]];
+      const char = "\ude4b";
+      const lastArrInList = list[list.length - 1];
 
       const result = createConditionalsForCharParse(list, char, lastArrInList);
-      const expectedResult: charParseConditionals = {
+      const expectedResult = {
         charIs: { encodedEmoji: false, unicode: true },
         charNotCompatibleWithLastArr: true,
         charToBePushedToArr: true,
@@ -86,9 +86,9 @@ describe("Lib: emojiConversion", () => {
 
   describe("Function: encodeEmoji", () => {
     it("encodes an emoji or character of an emoji into its given codepoint inbetween hash symbols", () => {
-      const arg: string = "🔥";
-      const result: string = encodeEmoji(arg);
-      const expectedResult: string = "#128293#";
+      const arg = "🔥";
+      const result = encodeEmoji(arg);
+      const expectedResult = "#128293#";
 
       expect(result).toBe(expectedResult);
     });
@@ -96,9 +96,9 @@ describe("Lib: emojiConversion", () => {
 
   describe("Function: decodeEmoji", () => {
     it("decodes a codepoint into an encoded emoji or character of an emoji", () => {
-      const arg: string = "128293";
-      const result: string = decodeEmoji(arg);
-      const expectedResult: string = "🔥";
+      const arg = "128293";
+      const result = decodeEmoji(arg);
+      const expectedResult = "🔥";
 
       expect(result).toBe(expectedResult);
     });
@@ -106,9 +106,9 @@ describe("Lib: emojiConversion", () => {
 
   describe("Function: containsNonLatinCodepoints", () => {
     it("determines if a character in  non-latin codepoint", () => {
-      let arg: string = "\ud83d";
-      let result: boolean = containsNonLatinCodepoints(arg);
-      let expectedResult: boolean = true;
+      let arg = "\ud83d";
+      let result = containsNonLatinCodepoints(arg);
+      let expectedResult = true;
 
       expect(result).toBe(expectedResult);
 
