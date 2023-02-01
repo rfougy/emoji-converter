@@ -1,0 +1,13 @@
+{
+  "name": "emoji-converter",
+  "version": "1.0.0",
+  "description": "Encode and decode emojis to ensure proper storage to your database.",
+  "main": "index.js",
+  "repository": "https://github.com/rfougy/emoji-converter.git",
+  "author": "Riviere Fougy",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "jest": "^29.4.1"
+  }
+}
